@@ -1,0 +1,10 @@
+ignore = [
+    "node_modules",
+    ".git",
+    "venv",
+    "public",
+    ".next",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "app/favicon.ico"
+]

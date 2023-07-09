@@ -1,9 +1,10 @@
 from flask import Flask
+
 app = Flask(__name__)
 
-@app.route('/api/hello', methods=['GET'])
-def hello_world():
-    return "Hello, World!"
+@app.route("/api/healthchecker", methods=["GET"])
+def healthchecker():
+    return {"status": "success", "message": "Integrate Flask Framework with Next.js"}
 
-if __name__ == '__main__':
-    app.run(port=5328)
+if __name__ == "__main__":
+    app.run()
