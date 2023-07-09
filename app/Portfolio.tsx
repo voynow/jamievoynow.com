@@ -14,8 +14,8 @@ interface PortfolioProps {
 
 const Portfolio = ({ className }: PortfolioProps) => {
     const [portfolio, setPortfolio] = useState<Project[]>([]);
-    const apiUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/portfolio' : '/api/portfolio';
-    const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '';
+    const apiUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/portfolio' : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/portfolio`;
+    const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 
     useEffect(() => {
         fetch(apiUrl)
