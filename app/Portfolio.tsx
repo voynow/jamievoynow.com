@@ -1,8 +1,10 @@
-"use client";
-
 import { useEffect, useState } from 'react';
 
-const Portfolio = ({ className }) => {
+interface PortfolioProps {
+  className: string;
+}
+
+const Portfolio = ({ className }: PortfolioProps) => {
     const [portfolio, setPortfolio] = useState<Project[]>([]);
     const url = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/portfolio' : '/api/portfolio';
 
