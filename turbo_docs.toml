@@ -1,4 +1,5 @@
 ignore = [
+    "turbo_docs.toml",
     "node_modules",
     ".git",
     "venv",
@@ -6,5 +7,6 @@ ignore = [
     ".next",
     "package-lock.json",
     "pnpm-lock.yaml",
-    "app/favicon.ico"
+    "app/favicon.ico",
+    "__pycache__",
 ]
