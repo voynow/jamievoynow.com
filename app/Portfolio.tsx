@@ -1,6 +1,11 @@
 "use client";
-
 import { useEffect, useState } from 'react';
+
+interface Project {
+  name: string;
+  description: string;
+  imageUrl?: string;
+}
 
 interface PortfolioProps {
   className: string;
