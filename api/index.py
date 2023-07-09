@@ -1,6 +1,9 @@
 from flask import Flask
 app = Flask(__name__)
 
-@app.route("/api/python")
+@app.route('/api/hello', methods=['GET'])
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return "Hello, World!"
+
+if __name__ == '__main__':
+    app.run(port=5328)
