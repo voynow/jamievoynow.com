@@ -9,4 +9,9 @@ ignore = [
     "pnpm-lock.yaml",
     "app/favicon.ico",
     "__pycache__",
+    "images",
+    "next-env.d.ts",
+    "README.md",
+    ".gitignore"
+
 ]

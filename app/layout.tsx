@@ -6,9 +6,9 @@ import Portfolio from './Portfolio'
 export default function RootLayout() {
   return (
     <html lang="en">
-      <body>
+      <body className="flex flex-col min-h-screen">
         <Navbar />
-        <Portfolio />
+        <Portfolio className="flex-grow" />
         <Skills />
       </body>
     </html>
