@@ -16,4 +16,5 @@ ignore = [
     # "index.py",
     # "services.py",
     "config.py",
+    "assets"
 ]

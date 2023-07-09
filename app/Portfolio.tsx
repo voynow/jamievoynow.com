@@ -1,22 +1,24 @@
 "use client";
+
 import { useEffect, useState } from 'react';
 
 interface Project {
-  name: string;
-  description: string;
-  imageUrl?: string;
+    name: string;
+    description: string;
+    imageUrl?: string;
 }
 
 interface PortfolioProps {
-  className: string;
+    className: string;
 }
 
 const Portfolio = ({ className }: PortfolioProps) => {
     const [portfolio, setPortfolio] = useState<Project[]>([]);
-    const url = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/portfolio' : '/api/portfolio';
+    const apiUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/portfolio' : '/api/portfolio';
+    const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : '';
 
     useEffect(() => {
-        fetch(url)
+        fetch(apiUrl)
             .then(res => res.json())
             .then(data => {
                 setPortfolio(data);
@@ -25,13 +27,20 @@ const Portfolio = ({ className }: PortfolioProps) => {
     }, []);
 
     return (
-        <div className={`${className} bg-white flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8`}>
-            <h1 className="text-5xl font-extrabold text-blue-600 flex-grow-0">Portfolio</h1>
-            <div className="mt-6 flex flex-wrap justify-center items-start gap-6 flex-grow">
+        <div className={`${className} bg-white py-12 px-4 sm:px-6 lg:px-8`}>
+            <h1 className="text-5xl font-extrabold text-blue-600">Portfolio</h1>
+            <div className="mt-6 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {portfolio.map((project, index) => (
-                    <div key={index} className="w-full sm:w-64 bg-gray-100 rounded-xl p-4 shadow-lg transform transition duration-200 hover:scale-105 flex-grow-0">
-                        <h2 className="text-xl font-semibold text-blue-600 mb-2">{project.name}</h2>
-                        <p className="text-gray-700">{project.description}</p>
+                    <div key={index} className="bg-gray-100 rounded-xl p-4 shadow-lg transform transition duration-200 hover:scale-105">
+                        {project.imageUrl && (
+                            <div className="relative overflow-hidden rounded-t-xl">
+                                <img src={`${baseUrl}${project.imageUrl}`} alt={project.name} className="w-full h-full object-cover" />
+                            </div>
+                        )}
+                        <div className="mt-4">
+                            <h2 className="text-xl font-semibold text-blue-600 mb-2">{project.name}</h2>
+                            <p className="text-gray-700">{project.description}</p>
+                        </div>
                     </div>
                 ))}
             </div>
