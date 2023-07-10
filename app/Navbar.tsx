@@ -3,7 +3,7 @@ import { faTwitter, faLinkedin, faGithub } from "@fortawesome/free-brands-svg-ic
 
 export default function Navbar() {
   return (
-    <nav className="bg-blue-600 py-4 px-16 sticky top-0 z-50">
+    <nav className="bg-indigo-700 py-4 px-16 sticky top-0 z-50">
       <div className="flex items-center justify-between">
         <div className="text-white text-2xl font-bold">
           <span role="img" aria-label="emoji">🚀</span> JamieVoynow.com
