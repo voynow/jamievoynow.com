@@ -21,7 +21,7 @@ export default function Skills() {
             <div className="h-16 w-16 relative">
               <Image src={skill.src} alt={skill.alt} layout="fill" objectFit="contain" />
             </div>
-            <figcaption className="mt-2 text-center text-black text-sm">{skill.alt}</figcaption>
+            <figcaption className="text-center text-gray-600 text-sm">{skill.alt}</figcaption>
           </figure>
         ))}
       </div>
