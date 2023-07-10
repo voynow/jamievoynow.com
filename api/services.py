@@ -1,6 +1,5 @@
 import config
 from dotenv import load_dotenv
-from flask import url_for
 import os
 import requests
 load_dotenv()

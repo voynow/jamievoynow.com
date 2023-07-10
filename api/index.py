@@ -11,7 +11,7 @@ def healthchecker():
 
 @app.route("/api/portfolio", methods=["GET"])
 def portfolio():
-    return services.fetch_portfolio()
+    return jsonify(services.fetch_portfolio())
 
 if __name__ == "__main__":
     app.run()
