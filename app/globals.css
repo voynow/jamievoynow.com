@@ -33,3 +33,17 @@ body {
 html, body, #__next {
   height: 100%;
 }
+
+.portfolio-image {
+  filter: sepia(.25) saturate(2) hue-rotate(120deg);
+}
+
+.image-container {
+  height: 200px;
+  overflow: hidden;
+}
+
+.description-container {
+  height: 100px;
+  overflow: auto;
+}

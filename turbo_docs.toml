@@ -12,6 +12,9 @@ ignore = [
     "images",
     "next-env.d.ts",
     "README.md",
-    ".gitignore"
-
+    ".gitignore",
+    # "index.py",
+    # "services.py",
+    "config.py",
+    "assets"
 ]
