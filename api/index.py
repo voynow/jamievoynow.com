@@ -1,6 +1,5 @@
 from flask import Flask, jsonify
 import flask_cors
-import config
 import dotenv
 import os
 import requests
