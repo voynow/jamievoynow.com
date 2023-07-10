@@ -14,11 +14,13 @@ interface PortfolioProps {
 
 const Portfolio = ({ className }: PortfolioProps) => {
     const [portfolio, setPortfolio] = useState<Project[]>([]);
-    const apiUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api/portfolio' : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/portfolio`;
-    const baseUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:5000' : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
+    const URL = process.env.NEXT_PUBLIC_VERCEL_URL
+        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+        : "http://localhost:3000/api";
+    console.log(URL);
 
     useEffect(() => {
-        fetch(apiUrl)
+        fetch(`${URL}/portfolio`)
             .then(res => res.text())
             .then(text => {
                 try {
@@ -43,7 +45,7 @@ const Portfolio = ({ className }: PortfolioProps) => {
                     <div key={index} className="bg-gray-100 rounded-xl shadow-lg transform transition duration-200 hover:scale-105 p-0">
                         {project.imageUrl && (
                             <div className="relative overflow-hidden rounded-t-xl image-container">
-                                <img src={`${baseUrl}${project.imageUrl}`} alt={project.name} className="w-full h-full object-cover portfolio-image" />
+                                <img src={`/images/${project.imageUrl}`} alt={project.name} className="w-full h-full object-cover portfolio-image" />
                             </div>
                         )}
                         <div className="mt-4 p-4">

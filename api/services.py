@@ -23,7 +23,7 @@ def fetch_portfolio():
             "name": node["node"]["name"],
             "description": node["node"]["description"],
             "url": node["node"]["url"],
-            "imageUrl": url_for('static', filename=f'assets/{node["node"]["name"]}.png'),
+            "imageUrl": f'{node["node"]["name"]}.png',
         }
         for node in edges
     ]
