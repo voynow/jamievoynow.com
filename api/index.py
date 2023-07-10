@@ -63,7 +63,7 @@ def fetch_portfolio():
 
     response = requests.post(
         endpoint,
-        json={"query": config.GH_GRAPHQL_QUERY % config.GITHUB_USERNAME},
+        json={"query": GH_GRAPHQL_QUERY % GITHUB_USERNAME},
         headers=headers,
     ).json()
 
