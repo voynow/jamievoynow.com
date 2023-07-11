@@ -8,7 +8,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between">
                 <div className="text-white text-2xl font-bold hover:text-blue-300">
                     <Link href="/">
-                        <span role="img" aria-label="emoji">🚀</span> JamieVoynow.com
+                        <span role="img" aria-label="emoji">🚀</span> Jamie Voynow
                     </Link>
                 </div>
 
