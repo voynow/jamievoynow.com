@@ -1,16 +1,23 @@
 import { useState, useEffect, useRef } from 'react';
 
-const ChatInterface = ({ projectName }) => {
-    const [message, setMessage] = useState('');
-    const [messages, setMessages] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const inputRef = useRef(null);
+interface ChatInterfaceProps {
+    projectName: string;
+}
+
+interface Message {
+    text: string;
+    sender: 'user' | 'bot';
+}
+
+const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
+    const [message, setMessage] = useState<string>('');
+    const [messages, setMessages] = useState<Message[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const handleSend = async () => {
         if (message.trim()) {
             setIsLoading(true);
-            // Here we might call an API to send the message to the chatbot and get a response.
-            // For now, let's simulate a delay with a setTimeout.
             await new Promise(resolve => setTimeout(resolve, 1000));
             setMessages(prevMessages => [...prevMessages, {text: message, sender: 'user'}, {text: `Reply to: ${message}`, sender: 'bot'}]);
             setMessage('');
@@ -23,16 +30,18 @@ const ChatInterface = ({ projectName }) => {
     }, [isLoading]);
 
     return (
-        <div className="bg-white shadow overflow-hidden sm:rounded-lg p-4">
-            <h2 className="text-2xl font-bold text-gray-400 mb-4">Chat with {projectName}</h2>
-            <p className='text-gray-400 mb-4'>Learn about {projectName} in a natural language interface</p>
-            <div className="border-t border-gray-200 mt-4 p-4">
-                {messages.map((msg, idx) => (
-                    <div key={idx} className={`p-2 rounded max-w-xs mb-2 ${msg.sender === 'user' ? 'bg-blue-200 text-white self-end' : 'bg-gray-200 text-black self-start'}`}>
-                        {msg.text}
-                    </div>
-                ))}
-                {isLoading && <div className="self-center text-gray-500">...loading</div>}
+        <div className="h-full flex flex-col bg-white shadow overflow-hidden sm:rounded-lg p-4">
+            <div className="flex-grow overflow-y-auto pb-4">
+                <h2 className="text-2xl font-bold text-gray-400 mb-4">Chat with {projectName}</h2>
+                <p className='text-gray-400 mb-4'>Learn about {projectName} in a natural language interface</p>
+                <div className="border-t border-gray-200 mt-4 p-4">
+                    {messages.map((msg, idx) => (
+                        <div key={idx} className={`p-2 rounded max-w-xs mb-2 ${msg.sender === 'user' ? 'bg-blue-200 text-white self-end' : 'bg-gray-200 text-black self-start'}`}>
+                            {msg.text}
+                        </div>
+                    ))}
+                    {isLoading && <div className="self-center text-gray-500">...loading</div>}
+                </div>
             </div>
             <div className="flex mt-4 border-t border-gray-200 pt-4">
                 <input 
