@@ -87,5 +87,11 @@ def healthchecker():
 def portfolio():
     return jsonify(fetch_portfolio())
 
+@app.route("/api/project/<string:project_name>", methods=["GET"])
+def project(project_name):
+    portfolio = {item['name']: item for item in fetch_portfolio()}
+    return jsonify(portfolio[project_name])
+
+
 if __name__ == "__main__":
     app.run()
