@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
-import ChatInterface from './ChatInterface';
+// import ChatInterface from './ChatInterface';
 import Navbar from './Navbar';
 
 interface Project {
@@ -49,7 +49,7 @@ const ProjectPage = ({ projectName }: ProjectPageProps) => {
                     </div>
                 </div>
                 <div className="w-2/3">
-                    <ChatInterface projectName={project.name} />
+                    {/* <ChatInterface projectName={project.name} /> */}
                 </div>
             </main>
         </div>

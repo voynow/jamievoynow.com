@@ -17,6 +17,8 @@ ignore = [
     "README.md",
     ".gitignore",
     # "index.py",
+    "Navbar.tsx",
+    "Skills.tsx",
     "assets",
     "Skills.tsx"
 ]
