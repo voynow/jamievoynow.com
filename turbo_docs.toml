@@ -20,5 +20,4 @@ ignore = [
     "Navbar.tsx",
     "Skills.tsx",
     "assets",
-    "Skills.tsx"
 ]

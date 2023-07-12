@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { io } from 'socket.io-client';
 
 interface ChatInterfaceProps {
     projectName: string;
@@ -10,17 +9,6 @@ interface Message {
     sender: 'user' | 'bot';
 }
 
-const socket = io(process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:5000");
-
-socket.on('connect_error', (error: unknown) => {
-  console.error('Connection Error', error);
-});
-
-socket.on('connect_timeout', (timeout: unknown) => {
-  console.error('Connection Timeout', timeout);
-});
-
-
 const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
     const [message, setMessage] = useState<string>('');
     const [messages, setMessages] = useState<Message[]>([]);
@@ -29,25 +17,28 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
 
     const handleSend = async () => {
         if (message.trim()) {
-            console.log('Emitting message:', message);
+            console.log('Sending message:', message);
             setIsLoading(true);
-            socket.emit('send_message', { message: message, project: projectName });
             setMessages(prevMessages => [...prevMessages, { text: message, sender: 'user' }]);
             setMessage('');
+            const response = await fetch('/api/send_message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: message, project: projectName })
+            });
+            if (!response.ok) {
+                console.error('Error sending message:', response.status, response.statusText);
+                setIsLoading(false);
+                return;
+            }
+            const responseData = await response.json();
+            console.log('Received response:', responseData);
+            setMessages(prevMessages => [...prevMessages, { text: responseData, sender: 'bot' }]);
+            setIsLoading(false);
         }
     };
-
-    useEffect(() => {
-        socket.on('receive_message', (message: string) => {
-            console.log('Received message:', message);
-            setIsLoading(false);
-            setMessages(prevMessages => [...prevMessages, { text: message, sender: 'bot' }]);
-        });
-        return () => {
-            socket.off();
-        };
-    }, []);
-
 
     useEffect(() => {
         if (!isLoading) inputRef.current?.focus();
@@ -71,8 +62,6 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
                             <div className="dot-typing"></div>
                         </div>
                     )}
-
-
                 </div>
             </div>
             <div className="flex mt-4 border-t border-gray-200 pt-4">

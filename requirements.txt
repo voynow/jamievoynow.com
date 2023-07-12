@@ -2,4 +2,3 @@ Flask
 flask-cors
 python-dotenv
 requests
-flask_socketio
