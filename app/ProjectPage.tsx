@@ -46,9 +46,6 @@ const ProjectPage = ({ projectName }: ProjectPageProps) => {
                             </a>
                         </div>
                         <p className="mt-4 mb-4 text-gray-600 text-md text-center font-medium">{project.description}</p>
-                        {project.imageUrl && (
-                            <img src={`/images/${project.imageUrl}`} alt={project.name} className="mt-6 w-full h-auto object-cover" />
-                        )}
                     </div>
                 </div>
                 <div className="w-2/3">

@@ -47,3 +47,39 @@ html, body, #__next {
   height: 100px;
   overflow: auto;
 }
+
+.dot-typing {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #999;
+  position: relative;
+  animation: typing 1s infinite;
+  margin-left: 20px;
+}
+
+.dot-typing::before, .dot-typing::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #999;
+}
+
+.dot-typing::before {
+  left: 15px;
+  animation: typing 1s infinite 0.2s;
+}
+
+.dot-typing::after {
+  left: 30px;
+  animation: typing 1s infinite 0.4s;
+}
+
+@keyframes typing {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
