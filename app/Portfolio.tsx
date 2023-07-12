@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 interface Project {
     name: string;
@@ -15,8 +16,8 @@ interface PortfolioProps {
 const Portfolio = ({ className }: PortfolioProps) => {
     const [portfolio, setPortfolio] = useState<Project[]>([]);
     const URL = process.env.NEXT_PUBLIC_VERCEL_URL
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
-    : "http://localhost:3000/api";
+        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+        : "http://localhost:3000/api";
 
     useEffect(() => {
         fetch(`${URL}/portfolio`)
@@ -38,7 +39,7 @@ const Portfolio = ({ className }: PortfolioProps) => {
 
     return (
         <div className={`${className} bg-white py-12 px-4 sm:px-6 lg:px-8`}>
-            <h1 className="text-5xl font-extrabold text-indigo-600">Portfolio</h1>
+            <h1 className="text-5xl font-extrabold text-blue-600">Portfolio</h1>
             <div className="mt-6 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {portfolio.map((project, index) => (
                     <div key={index} className="bg-gray-100 rounded-xl shadow-lg transform transition duration-200 hover:scale-105 p-0">
@@ -48,9 +49,12 @@ const Portfolio = ({ className }: PortfolioProps) => {
                             </div>
                         )}
                         <div className="mt-4 p-4">
-                            <h2 className="text-xl font-semibold text-indigo-600 mb-2">{project.name}</h2>
+                            <Link href={`/project/${project.name}`}>
+                                <h2 className="text-xl font-semibold text-blue-600 mb-2">{project.name}</h2>
+                            </Link>
                             <div className="description-container text-gray-600">{project.description}</div>
                         </div>
+
                     </div>
                 ))}
             </div>

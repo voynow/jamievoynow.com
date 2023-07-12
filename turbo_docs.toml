@@ -2,10 +2,13 @@ ignore = [
     "turbo_docs.toml",
     "node_modules",
     ".git",
+    ".env",
     "venv",
     "public",
     ".next",
     "package-lock.json",
+    "tsconfig.json",
+    "requirements.txt",
     "pnpm-lock.yaml",
     "app/favicon.ico",
     "__pycache__",
@@ -14,7 +17,8 @@ ignore = [
     "README.md",
     ".gitignore",
     # "index.py",
-    # "services.py",
-    "config.py",
-    "assets"
+    "Navbar.tsx",
+    "Skills.tsx",
+    "assets",
+    "Skills.tsx"
 ]
