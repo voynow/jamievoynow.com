@@ -1,15 +1,30 @@
-import { useRouter } from 'next/router';
+import { GetServerSideProps } from 'next';
 import ProjectPage from '../../app/ProjectPage';
 
-const ProjectRoute = () => {
-  const router = useRouter();
-  const { name } = router.query;
+interface ProjectRouteProps {
+    projectName: string;
+    project: any;  // replace with the type of your project data
+}
 
-  if (typeof name !== 'string') {
-    return <div>Loading...</div>;
-  }
+const ProjectRoute = ({ projectName, project }: ProjectRouteProps) => {
+    return <ProjectPage projectName={projectName} project={project} />;
+};
 
-  return <ProjectPage projectName={name} />;
+export const getServerSideProps: GetServerSideProps<ProjectRouteProps> = async (context) => {
+    const { name } = context.query;
+
+    if (typeof name !== 'string') {
+        return { notFound: true };
+    }
+
+    const URL = process.env.NEXT_PUBLIC_VERCEL_URL
+        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
+        : "http://localhost:3000/api";
+
+    const response = await fetch(`${URL}/project/${name}`);
+    const project = await response.json();
+
+    return { props: { projectName: name, project } };
 };
 
 export default ProjectRoute;

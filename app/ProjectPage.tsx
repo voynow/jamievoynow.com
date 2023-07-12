@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { FiExternalLink } from 'react-icons/fi';
 import ChatInterface from './ChatInterface';
 import Navbar from './Navbar';
@@ -12,25 +11,10 @@ interface Project {
 
 interface ProjectPageProps {
     projectName: string;
+    project: Project;
 }
 
-const ProjectPage = ({ projectName }: ProjectPageProps) => {
-    const [project, setProject] = useState<Project | null>(null);
-    const URL = process.env.NEXT_PUBLIC_VERCEL_URL
-        ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api`
-        : "http://localhost:3000/api";
-
-    useEffect(() => {
-        fetch(`${URL}/project/${projectName}`)
-            .then(res => res.json())
-            .then(data => {
-                setProject(data);
-            })
-            .catch(err => {
-                console.error('Error fetching project data:', err);
-            });
-    }, [projectName]);
-
+const ProjectPage = ({ projectName, project }: ProjectPageProps) => {
     if (!project) return <div>Loading...</div>;
 
     return (

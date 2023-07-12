@@ -10,15 +10,13 @@ ignore = [
     "tsconfig.json",
     "requirements.txt",
     "pnpm-lock.yaml",
-    "app/favicon.ico",
     "__pycache__",
     "images",
-    "next-env.d.ts",
+    # "next-env.d.ts",
     "README.md",
     ".gitignore",
     # "index.py",
     "Navbar.tsx",
     "Skills.tsx",
     "assets",
-    "Skills.tsx"
 ]
