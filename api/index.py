@@ -98,10 +98,25 @@ def project(project_name):
     return jsonify(portfolio[project_name])
 
 
-@app.route("/api/send_message", methods=["POST"])
-def send_message():
+@app.route("/api/chat", methods=["POST"])
+def chat():
     data = request.get_json()
-    print("Received message:", data)
+    # github_url = PROFILE_INFO["github"]
+    # repo_url = f"{github_url}/{project_name}"
+    # repo_docs = loader.pull_code_from_repo(repo_url)
+    
+    # repo_str = ""
+    # for item in repo_docs:
+    #     repo_str += f"{item['file_path']}:\n\n{item['page_content']}\n\n" 
+
+    # try:
+    #     project_chat_chain = chat_utils.GenericChain(template=config.TEMPLATE, model_name="gpt-3.5-turbo-16k")
+    #     response = project_chat_chain(repo_url=repo_url, repo=repo_str, query=query)["text"]
+    # except openai.error.InvalidRequestError:
+    #     num_tokens = num_tokens_from_string(repo_str)
+    #     response = f"I'm sorry, this repo is not supported yet due to context length limitations (currently attempting {num_tokens} tokens). We are actively working on fixing this!"
+
+    # return response
     response = "*** test response ***"
     time.sleep(2)
     return jsonify(response)

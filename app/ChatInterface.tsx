@@ -21,7 +21,7 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
             setIsLoading(true);
             setMessages(prevMessages => [...prevMessages, { text: message, sender: 'user' }]);
             setMessage('');
-            const response = await fetch('/api/send_message', {
+            const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
                 <p className='text-gray-400 mb-4'>Learn about {projectName} in a natural language interface</p>
                 <div className="border-t border-gray-200 mt-4 p-4">
                     {messages.map((msg, idx) => (
-                        <div key={idx} className={`p-2 rounded-lg max-w-xs mb-2 ml-2 mr-2 ${msg.sender === 'user' ? 'bg-blue-200 text-white ml-auto' : 'bg-gray-200 text-black mr-auto'}`}>
+                        <div key={idx} className={`p-2 rounded-lg max-w-xs mb-2 ml-2 mr-2 ${msg.sender === 'user' ? 'bg-blue-300 text-white ml-auto' : 'bg-gray-200 text-black mr-auto'}`}>
                             <p className={`px-4 py-2 ${msg.sender === 'user' ? 'rounded-br-none' : 'rounded-bl-none'}`}>
                                 {msg.text}
                             </p>
