@@ -13,19 +13,19 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex space-x-6">
-                    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 flex items-center">
+                    <a href="https://twitter.com/JamieVoynow" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 flex items-center">
                         <div className="w-6 h-6">
                             <FontAwesomeIcon icon={faTwitter} className="w-full h-full" />
                         </div>
                         Twitter
                     </a>
-                    <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 flex items-center">
+                    <a href="https://www.linkedin.com/in/voynow/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 flex items-center">
                         <div className="w-6 h-6">
                             <FontAwesomeIcon icon={faLinkedin} className="w-full h-full" />
                         </div>
                         LinkedIn
                     </a>
-                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 flex items-center">
+                    <a href="https://github.com/voynow" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 flex items-center">
                         <div className="w-6 h-6">
                             <FontAwesomeIcon icon={faGithub} className="w-full h-full" />
                         </div>
