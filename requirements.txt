@@ -2,3 +2,4 @@ Flask
 flask-cors
 python-dotenv
 requests
+llm-blocks
