@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from flask_socketio import SocketIO, emit
+# from flask_socketio import SocketIO, emit
 import flask_cors
 import dotenv
 import os
@@ -8,7 +8,7 @@ import time
 
 dotenv.load_dotenv()
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*", logger=True, engineio_logger=True)
+# socketio = SocketIO(app, cors_allowed_origins="*", logger=True, engineio_logger=True)
 flask_cors.CORS(app)
 
 GH_GRAPHQL_QUERY = """
@@ -100,12 +100,12 @@ def project(project_name):
     return jsonify(portfolio[project_name])
 
 
-@socketio.on("send_message")
-def handle_send_message(data):
-    print("Received message:", data)
-    response = "*** test response*** "
-    time.sleep(2)
-    emit("receive_message", response)
+# @socketio.on("send_message")
+# def handle_send_message(data):
+#     print("Received message:", data)
+#     response = "*** test response*** "
+#     time.sleep(2)
+#     emit("receive_message", response)
 
 
 if __name__ == "__main__":
