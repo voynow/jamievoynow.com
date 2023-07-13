@@ -1,9 +1,11 @@
+import dotenv
 from flask import Flask, jsonify, request
 import flask_cors
-import dotenv
+from git2doc import loader
+from llm_blocks import chat_utils
+import openai
 import os
 import requests
-import time
 
 dotenv.load_dotenv()
 app = Flask(__name__)
@@ -41,6 +43,8 @@ Here is the entire repository in plain text:
 
 Respond to the following query in markdown:
 {query}
+
+Be concise unless otherwise specified. If you are unable to answer the question, respond with "I don't know" or "I'm not sure".
 """
 
 ENDPOINT = "https://api.github.com/graphql"
@@ -100,25 +104,23 @@ def project(project_name):
 
 @app.route("/api/chat", methods=["POST"])
 def chat():
-    data = request.get_json()
-    # github_url = PROFILE_INFO["github"]
-    # repo_url = f"{github_url}/{project_name}"
-    # repo_docs = loader.pull_code_from_repo(repo_url)
     
-    # repo_str = ""
-    # for item in repo_docs:
-    #     repo_str += f"{item['file_path']}:\n\n{item['page_content']}\n\n" 
+    data = request.get_json()
+    query = data.get('message')
+    project_name = data.get('project')
 
-    # try:
-    #     project_chat_chain = chat_utils.GenericChain(template=config.TEMPLATE, model_name="gpt-3.5-turbo-16k")
-    #     response = project_chat_chain(repo_url=repo_url, repo=repo_str, query=query)["text"]
-    # except openai.error.InvalidRequestError:
-    #     num_tokens = num_tokens_from_string(repo_str)
-    #     response = f"I'm sorry, this repo is not supported yet due to context length limitations (currently attempting {num_tokens} tokens). We are actively working on fixing this!"
-
-    # return response
-    response = "*** test response ***"
-    time.sleep(2)
+    github_url = PROFILE_INFO["github"]
+    repo_url = f"{github_url}/{project_name}"
+    repo_docs = loader.pull_code_from_repo(repo_url)
+    
+    repo_str = ""
+    for item in repo_docs:
+        repo_str += f"{item['file_path']}:\n\n{item['page_content']}\n\n" 
+    try:
+        project_chat_chain = chat_utils.GenericChain(template=TEMPLATE, model_name="gpt-3.5-turbo-16k")
+        response = project_chat_chain(repo_url=repo_url, repo=repo_str, query=query)["text"]
+    except openai.error.InvalidRequestError:
+        response = f"I'm sorry, this repo is not supported yet due to context length limitations. We are actively working on fixing this!"
     return jsonify(response)
 
 
