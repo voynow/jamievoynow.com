@@ -52,7 +52,7 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
                 <p className='text-gray-400 mb-4'>Learn about {projectName} in a natural language interface</p>
                 <div className="border-t border-gray-200 mt-4 p-4">
                     {messages.map((msg, idx) => (
-                        <div key={idx} className={`flex w-full justify-${msg.sender === 'user' ? 'end' : 'start'} mb-2`}>
+                        <div key={idx} className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-2`}>
                             <div className={`p-2 rounded-lg ${msg.sender === 'user' ? 'bg-blue-300 text-white ml-20' : 'bg-gray-200 text-black mr-20'}`}>
                                 <ReactMarkdown className={`px-4 py-2 ${msg.sender === 'user' ? 'rounded-br-none' : 'rounded-bl-none'}`}>
                                     {msg.text}
@@ -60,6 +60,7 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
                             </div>
                         </div>
                     ))}
+
                     {isLoading && (
                         <div className="self-start text-gray-500 flex items-center mb-2 ml-4 space-x-1">
                             <div className="dot-typing"></div>

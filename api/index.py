@@ -1,7 +1,7 @@
 import dotenv
 from flask import Flask, jsonify, request
 import flask_cors
-# from git2doc import loader
+from git2doc import loader
 from llm_blocks import chat_utils
 import openai
 import os
@@ -41,10 +41,10 @@ You are an expert software engineering assistant. A code repository from {repo_u
 Here is the entire repository in plain text:
 {repo}
 
-Respond to the following query in markdown:
+Respond to the following query:
 {query}
 
-Be concise unless otherwise specified. If you are unable to answer the question, respond with "I don't know" or "I'm not sure".
+Be concise unless otherwise specified. Respond in formatted markdown. If you are unable to answer the question, respond with "I don't know" or "I'm not sure".
 """
 
 ENDPOINT = "https://api.github.com/graphql"
