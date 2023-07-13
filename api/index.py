@@ -1,7 +1,7 @@
 import dotenv
 from flask import Flask, jsonify, request
 import flask_cors
-from git2doc import loader
+# from git2doc import loader
 from llm_blocks import chat_utils
 
 # import openai
@@ -111,11 +111,11 @@ def chat():
 
     github_url = PROFILE_INFO["github"]
     repo_url = f"{github_url}/{project_name}"
-    repo_docs = loader.pull_code_from_repo(repo_url)
+    # repo_docs = loader.pull_code_from_repo(repo_url)
 
     repo_str = ""
-    for item in repo_docs:
-        repo_str += f"{item['file_path']}:\n\n{item['page_content']}\n\n"
+    # for item in repo_docs:
+    #     repo_str += f"{item['file_path']}:\n\n{item['page_content']}\n\n"
     # try:
     project_chat_chain = chat_utils.GenericChain(
         template=TEMPLATE, model_name="gpt-3.5-turbo-16k"
