@@ -46,14 +46,14 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
     }, [isLoading]);
 
     return (
-        <div className="h-full flex flex-col bg-white shadow overflow-hidden sm:rounded-lg p-4">
+        <div className="h-full flex flex-col bg-secondary text-white shadow overflow-hidden sm:rounded-lg p-4">
             <div className="flex-grow overflow-y-auto pb-4">
-                <h2 className="text-2xl font-bold text-gray-400 mb-4">Chat with {projectName}</h2>
+                <h2 className="text-2xl font-bold text-primary mb-4">Chat with {projectName}</h2>
                 <p className='text-gray-400 mb-4'>Learn about {projectName} in a natural language interface</p>
-                <div className="border-t border-gray-200 mt-4 p-4">
+                <div className="border-t border-tertiary mt-4 p-4">
                     {messages.map((msg, idx) => (
                         <div key={idx} className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-2`}>
-                            <div className={`p-2 rounded-lg ${msg.sender === 'user' ? 'bg-blue-300 text-white ml-20' : 'bg-gray-200 text-black mr-20'}`}>
+                            <div className={`p-2 rounded-lg ${msg.sender === 'user' ? 'bg-primary text-white ml-20' : 'bg-tertiary text-white mr-20'}`}>
                                 <ReactMarkdown className={`px-4 py-2 ${msg.sender === 'user' ? 'rounded-br-none' : 'rounded-bl-none'}`}>
                                     {msg.text}
                                 </ReactMarkdown >
@@ -68,19 +68,19 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
                     )}
                 </div>
             </div>
-            <div className="flex mt-4 border-t border-gray-200 pt-4">
+            <div className="flex mt-4 border-t border-tertiary pt-4">
                 <input
                     ref={inputRef}
                     type="text"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={(e) => { if (e.key === 'Enter') handleSend() }}
-                    className="text-gray-600 flex-grow rounded-l-lg px-4 py-2 border-t-0 border-r-0 border-b-0 outline-none"
+                    className="text-white flex-grow rounded-l-lg px-4 py-2 border-t-0 border-r-0 border-b-0 outline-none bg-tertiary placeholder-gray-300"
                     placeholder="Enter your query here..."
                     disabled={isLoading}
                 />
 
-                <button onClick={handleSend} disabled={isLoading} className="bg-blue-600 hover:bg-blue-300 rounded-r-lg text-white px-4 py-2 border-t-0 border-r-2 border-b-0 border-l-0 outline-none">
+                <button onClick={handleSend} disabled={isLoading} className="bg-primary hover:bg-blue-300 rounded-r-lg text-white px-4 py-2 border-t-0 border-r-2 border-b-0 border-l-0 outline-none">
                     Send
                 </button>
             </div>

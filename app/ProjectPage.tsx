@@ -18,18 +18,18 @@ const ProjectPage = ({ projectName, project }: ProjectPageProps) => {
     if (!project) return <div>Loading...</div>;
 
     return (
-        <div className="flex flex-col h-screen bg-gray-100">
+        <div className="flex flex-col h-screen bg-secondary text-white">
             <Navbar />
             <main className="flex-grow p-6 flex overflow-y-scroll">
                 <div className="w-1/4 pr-4">
-                    <div className="shadow-lg rounded-lg bg-white p-6 h-full overflow-y-auto">
+                    <div className="shadow-lg rounded-lg bg-tertiary p-6 h-full overflow-y-auto">
                         <div className="justify-center text-center">
-                            <a href={project.url} className="text-indigo-600 flex items-center justify-center hover:text-indigo-500 transition-colors duration-200">
-                                <h1 className="text-3xl font-bold text-indigo-600">{project.name}</h1>
+                            <a href={project.url} className="text-primary flex items-center justify-center hover:text-white transition-colors duration-200">
+                                <h1 className="text-3xl font-bold text-primary">{project.name}</h1>
                                 <FiExternalLink className="ml-2 text-xl" />
                             </a>
                         </div>
-                        <p className="mt-4 mb-4 text-gray-600 text-md text-center font-medium">{project.description}</p>
+                        <p className="mt-4 mb-4 text-gray-400 text-md text-center font-medium">{project.description}</p>
                     </div>
                 </div>
                 <div className="w-2/3">

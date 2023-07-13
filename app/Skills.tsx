@@ -14,14 +14,14 @@ const skills = [
 
 export default function Skills() {
   return (
-    <footer className="bg-white py-6 px-6 mt-auto w-full flex justify-center">
+    <footer className="bg-secondary py-6 px-6 mt-auto w-full flex justify-center">
       <div className="flex flex-wrap justify-center items-center gap-6">
         {skills.map((skill, index) => (
           <figure key={index} className="flex flex-col items-center space-y-2">
             <div className="h-16 w-16 relative">
               <Image src={skill.src} alt={skill.alt} layout="fill" objectFit="contain" />
             </div>
-            <figcaption className="text-center text-gray-600 text-sm">{skill.alt}</figcaption>
+            <figcaption className="text-center text-tertiary text-sm">{skill.alt}</figcaption>
           </figure>
         ))}
       </div>
