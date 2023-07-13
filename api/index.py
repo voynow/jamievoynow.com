@@ -3,8 +3,7 @@ from flask import Flask, jsonify, request
 import flask_cors
 # from git2doc import loader
 from llm_blocks import chat_utils
-
-# import openai
+import openai
 import os
 import requests
 
@@ -99,12 +98,14 @@ def portfolio():
 
 @app.route("/api/project/<string:project_name>", methods=["GET"])
 def project(project_name):
+    print("TESTTEST")
     portfolio = {item["name"]: item for item in fetch_portfolio()}
     return jsonify(portfolio[project_name])
 
 
 @app.route("/api/chat", methods=["POST"])
 def chat():
+    print("TESTTESTTEST")
     data = request.get_json()
     query = data.get("message")
     project_name = data.get("project")
@@ -116,13 +117,13 @@ def chat():
     repo_str = ""
     # for item in repo_docs:
     #     repo_str += f"{item['file_path']}:\n\n{item['page_content']}\n\n"
-    # try:
-    project_chat_chain = chat_utils.GenericChain(
-        template=TEMPLATE, model_name="gpt-3.5-turbo-16k"
-    )
-    response = project_chat_chain(repo_url=repo_url, repo=repo_str, query=query)["text"]
-    # except openai.error.InvalidRequestError:
-    # response = f"I'm sorry, this repo is not supported yet due to context length limitations. We are actively working on fixing this!"
+    try:
+        project_chat_chain = chat_utils.GenericChain(
+            template=TEMPLATE, model_name="gpt-3.5-turbo-16k"
+        )
+        response = project_chat_chain(repo_url=repo_url, repo=repo_str, query=query)["text"]
+    except openai.error.InvalidRequestError:
+        response = f"I'm sorry, this repo is not supported yet due to context length limitations. We are actively working on fixing this!"
     return jsonify(response)
 
 
