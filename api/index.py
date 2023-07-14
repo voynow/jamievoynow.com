@@ -158,7 +158,6 @@ def portfolio():
 
 @app.route("/api/project/<string:project_name>", methods=["GET"])
 def project(project_name):
-    print("TESTTEST")
     portfolio = {item["name"]: item for item in fetch_portfolio()}
     return jsonify(portfolio[project_name])
 
