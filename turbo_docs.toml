@@ -23,6 +23,6 @@ ignore = [
     # "Navbar.tsx",
     # "Skills.tsx",
     "assets",
-    # "ChatInterface.tsx",
-    # "ProjectPage.tsx",
+    "ChatInterface.tsx",
+    "ProjectPage.tsx",
 ]

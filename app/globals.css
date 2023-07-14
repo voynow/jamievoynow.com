@@ -1,10 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 18, 18, 18;
+  --background-start-rgb: 10, 10, 10;
   --background-end-rgb: 0, 0, 0;
   --lightGrey: #1a1a1a;
   --text: #ffffff;
@@ -26,6 +25,7 @@ body {
 
 html, body, #__next {
   height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 .portfolio-image {
@@ -77,4 +77,67 @@ html, body, #__next {
   0% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
   100% { transform: translateY(0); }
+}
+
+.nav-icon {
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-icon:hover {
+  transform: scale(1.3);
+}
+
+.portfolio-card {
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-card img {
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio-card:hover img {
+  transform: scale(1.1);
+}
+
+.portfolio-card .card-content {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  transform: translateY(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.portfolio-card:hover .card-content {
+  transform: translateY(0);
+}
+
+.skill-icon {
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  position: relative;
+}
+
+.skill-icon:hover {
+  transform: scale(1.3);
+}
+
+.skill-icon figcaption {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.skill-icon:hover figcaption {
+  opacity: 1;
 }

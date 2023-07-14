@@ -46,9 +46,9 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
     }, [isLoading]);
 
     return (
-        <div className="h-full flex flex-col bg-secondary text-white shadow overflow-hidden sm:rounded-lg p-4">
+        <div className="h-full flex flex-col bg-gradient-to-r from-secondary to-tertiary text-white shadow overflow-hidden sm:rounded-lg p-4">
             <div className="flex-grow overflow-y-auto pb-4">
-                <h2 className="text-2xl font-bold text-primary mb-4">Chat with {projectName}</h2>
+                <h2 className="text-3xl font-bold text-primary mb-4">Chat with {projectName}</h2>
                 <p className='text-gray-400 mb-4'>Learn about {projectName} in a natural language interface</p>
                 <div className="border-t border-tertiary mt-4 p-4">
                     {messages.map((msg, idx) => (
@@ -75,7 +75,7 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={(e) => { if (e.key === 'Enter') handleSend() }}
-                    className="text-white flex-grow rounded-l-lg px-4 py-2 border-t-0 border-r-0 border-b-0 outline-none bg-tertiary placeholder-gray-300"
+                    className="text-black flex-grow rounded-l-lg px-4 py-2 border-t-0 border-r-0 border-b-0 outline-none bg-tertiary placeholder-gray-400"
                     placeholder="Enter your query here..."
                     disabled={isLoading}
                 />

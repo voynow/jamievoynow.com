@@ -8,28 +8,19 @@ export default function Navbar() {
             <div className="flex items-center justify-between">
                 <div className="text-white text-2xl font-bold hover:text-primary">
                     <Link href="/">
-                        <span role="img" aria-label="emoji">ðŸš€</span> Jamie Voynow
+                        <span role="img" aria-label="emoji">🚀</span> Jamie Voynow
                     </Link>
                 </div>
 
                 <div className="flex space-x-6">
-                    <a href="https://twitter.com/JamieVoynow" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 flex items-center">
-                        <div className="w-6 h-6">
-                            <FontAwesomeIcon icon={faTwitter} className="w-full h-full" />
-                        </div>
-                        Twitter
+                    <a href="https://twitter.com/JamieVoynow" target="_blank" rel="noopener noreferrer" className="nav-icon">
+                        <FontAwesomeIcon icon={faTwitter} className="text-white hover:text-blue-300" />
                     </a>
-                    <a href="https://www.linkedin.com/in/voynow/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 flex items-center">
-                        <div className="w-6 h-6">
-                            <FontAwesomeIcon icon={faLinkedin} className="w-full h-full" />
-                        </div>
-                        LinkedIn
+                    <a href="https://www.linkedin.com/in/voynow/" target="_blank" rel="noopener noreferrer" className="nav-icon">
+                        <FontAwesomeIcon icon={faLinkedin} className="text-white hover:text-blue-300" />
                     </a>
-                    <a href="https://github.com/voynow" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 flex items-center">
-                        <div className="w-6 h-6">
-                            <FontAwesomeIcon icon={faGithub} className="w-full h-full" />
-                        </div>
-                        GitHub
+                    <a href="https://github.com/voynow" target="_blank" rel="noopener noreferrer" className="nav-icon">
+                        <FontAwesomeIcon icon={faGithub} className="text-white hover:text-blue-300" />
                     </a>
                 </div>
             </div>
