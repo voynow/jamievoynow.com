@@ -75,12 +75,12 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={(e) => { if (e.key === 'Enter') handleSend() }}
-                    className="text-black flex-grow rounded-l-lg px-4 py-2 border-t-0 border-r-0 border-b-0 outline-none bg-tertiary placeholder-gray-400"
+                    className="text-black flex-grow rounded-l-lg px-4 py-2 border-t-0 border-r-0 border-b-0 outline-none bg-gray-300 placeholder-gray-400"
                     placeholder="Enter your query here..."
                     disabled={isLoading}
                 />
 
-                <button onClick={handleSend} disabled={isLoading} className="bg-primary hover:bg-blue-300 rounded-r-lg text-white px-4 py-2 border-t-0 border-r-2 border-b-0 border-l-0 outline-none">
+                <button onClick={handleSend} disabled={isLoading} className="bg-primary hover:bg-blue-300 rounded-r-lg text-white px-4 py-2 border-2 border-gray-300">
                     Send
                 </button>
             </div>

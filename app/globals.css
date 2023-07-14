@@ -33,12 +33,12 @@ html, body, #__next {
 }
 
 .image-container {
-  height: 200px;
+  height: 300px;
   overflow: hidden;
 }
 
 .description-container {
-  height: 100px;
+  height: 48px;
   overflow: auto;
 }
 
@@ -80,7 +80,8 @@ html, body, #__next {
 }
 
 .nav-icon {
-  transition: all 0.3s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  font-size: 28px;
 }
 
 .nav-icon:hover {

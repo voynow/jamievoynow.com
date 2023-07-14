@@ -20,12 +20,6 @@ query {
             name
             description
             url
-            stargazers {
-              totalCount
-            }
-            forks {
-              totalCount
-            }
           }
         }
       }

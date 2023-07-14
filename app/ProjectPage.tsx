@@ -19,12 +19,12 @@ const ProjectPage = ({ projectName, project }: ProjectPageProps) => {
     return (
         <div className="flex flex-col h-screen bg-gradient-to-r from-secondary to-tertiary text-white">
             <Navbar />
-            <main className="flex-grow p-6 flex overflow-hidden justify-center space-x-4">
-                <div className="w-2/3">
+            <main className="flex-grow p-4 flex overflow-hidden justify-center space-x-4">
+                <div className="w-2/3 border border-gray-800 shadow-lg rounded-lg">
                     <ChatInterface projectName={project.name} />
                 </div>
-                <div className="w-1/4 pr-4">
-                    <div className="shadow-lg rounded-lg bg-tertiary p-6 h-full overflow-y-auto">
+                <div className="w-1/4 pr-4 border border-gray-800 shadow-lg rounded-lg">
+                    <div className="bg-tertiary p-6 h-full overflow-y-auto">
                         <div className="justify-center text-center">
                             <a href={project.url} className="text-primary flex items-center justify-center hover:text-white transition-colors duration-200">
                                 <h1 className="text-4xl font-extrabold text-primary hover:text-blue-300">{project.name}</h1>
@@ -37,6 +37,7 @@ const ProjectPage = ({ projectName, project }: ProjectPageProps) => {
         </div>
     );
 }
+
 
 export default ProjectPage;
 
