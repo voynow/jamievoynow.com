@@ -19,10 +19,10 @@ ignore = [
     "next-env.d.ts",
     "README.md",
     ".gitignore",
-    "index.py",
+    # "index.py",
     # "Navbar.tsx",
     # "Skills.tsx",
     "assets",
-    "ChatInterface.tsx",
+    # "ChatInterface.tsx",
     # "ProjectPage.tsx",
 ]
