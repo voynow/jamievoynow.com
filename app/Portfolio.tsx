@@ -53,7 +53,7 @@ const Portfolio = ({ className }: PortfolioProps) => {
                         )}
                         <div className="mt-4 p-4">
                             <Link href={`/project/${project.name}`}>
-                                <h2 className="text-xl font-semibold text-primary mb-2 hover:text-white">{project.name}</h2>
+                                <h2 className="text-xl font-semibold text-primary mb-2 hover:text-blue-300">{project.name}</h2>
                             </Link>
                             <div className="description-container text-gray-600">{project.description}</div>
                         </div>

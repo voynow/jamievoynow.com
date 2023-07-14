@@ -53,7 +53,7 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
                 <div className="border-t border-tertiary mt-4 p-4">
                     {messages.map((msg, idx) => (
                         <div key={idx} className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-2`}>
-                            <div className={`p-2 rounded-lg ${msg.sender === 'user' ? 'bg-primary text-white ml-20' : 'bg-tertiary text-white mr-20'}`}>
+                            <div className={`p-2 rounded-lg border border-gray-800 ${msg.sender === 'user' ? 'bg-primary text-white ml-20' : 'bg-tertiary text-white mr-20'}`}>
                                 <ReactMarkdown className={`px-4 py-2 ${msg.sender === 'user' ? 'rounded-br-none' : 'rounded-bl-none'}`}>
                                     {msg.text}
                                 </ReactMarkdown >
