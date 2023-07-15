@@ -2,7 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 interface ChatInterfaceProps {
-    projectName: string;
+    project: {
+        name: string;
+        description: string;
+        url: string;
+    };
 }
 
 interface Message {
@@ -10,7 +14,7 @@ interface Message {
     sender: 'user' | 'bot';
 }
 
-const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
+const ChatInterface = ({ project }: ChatInterfaceProps) => {
     const [message, setMessage] = useState<string>('');
     const [messages, setMessages] = useState<Message[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -27,7 +31,7 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ message: message, project: projectName })
+                body: JSON.stringify({ message: message, project: project.name })
             });
             if (!response.ok) {
                 console.error('Error sending message:', response.status, response.statusText);
@@ -48,8 +52,13 @@ const ChatInterface = ({ projectName }: ChatInterfaceProps) => {
     return (
         <div className="h-full flex flex-col bg-gradient-to-r from-secondary to-tertiary text-white shadow overflow-hidden sm:rounded-lg p-4">
             <div className="flex-grow overflow-y-auto pb-4">
-                <h2 className="text-3xl font-bold text-primary mb-4">Chat with {projectName}</h2>
-                <p className='text-gray-400 mb-4'>Learn about {projectName} in a natural language interface</p>
+                <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-3xl font-bold text-primary">{project.name}</h2>
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-blue-300 rounded-lg text-white px-4 py-2 border-2 border-gray-300">
+                        View on GitHub
+                    </a>
+                </div>
+                <p className='text-gray-400 mb-4'>{project.description}</p>
                 <div className="border-t border-tertiary mt-4 p-4">
                     {messages.map((msg, idx) => (
                         <div key={idx} className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} mb-2`}>
