@@ -1,13 +1,13 @@
 import { GetServerSideProps } from 'next';
 import ProjectPage from '../../app/ProjectPage';
 
+
 interface ProjectRouteProps {
-    projectName: string;
-    project: any;  // replace with the type of your project data
+    project: any;
 }
 
-const ProjectRoute = ({ projectName, project }: ProjectRouteProps) => {
-    return <ProjectPage projectName={projectName} project={project} />;
+const ProjectRoute = ({ project }: ProjectRouteProps) => {
+    return <ProjectPage project={project} />;
 };
 
 export const getServerSideProps: GetServerSideProps<ProjectRouteProps> = async (context) => {
@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps<ProjectRouteProps> = async (
     const response = await fetch(`${URL}/project/${name}`);
     const project = await response.json();
 
-    return { props: { projectName: name, project } };
+    return { props: { project } };
 };
 
 export default ProjectRoute;
