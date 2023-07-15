@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Navbar() {
     return (
-        <nav className="py-2 px-16">
+        <nav className="py-2 px-10">
             <div className="flex items-center justify-between">
                 <Link href="/">
                     <div className="text-white text-2xl font-bold hover:text-blue-300 flex items-center">
