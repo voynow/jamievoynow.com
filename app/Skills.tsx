@@ -18,7 +18,7 @@ export default function Skills() {
       <div className="flex space-x-6">
         {skills.map((skill, index) => (
           <figure key={index} className="flex flex-col items-center space-y-2 skill-icon">
-            <div className="h-16 w-16 relative">
+            <div className="h-8 w-8 relative">
               <Image src={skill.src} alt={skill.alt} layout="fill" objectFit="contain" />
             </div>
             <figcaption className="text-center text-tertiary text-sm hidden group-hover:block">{skill.alt}</figcaption>
