@@ -1,5 +1,3 @@
-// pages/index.tsx
-
 import '../app/globals.css'
 import Navbar from '../app/Navbar'
 import Portfolio from '../app/Portfolio'

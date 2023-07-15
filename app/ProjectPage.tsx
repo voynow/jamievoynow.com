@@ -1,5 +1,6 @@
 import ChatInterface from './ChatInterface';
 import Navbar from './Navbar';
+import { FiExternalLink } from 'react-icons/fi';
 
 interface Project {
     name: string;
@@ -26,11 +27,17 @@ const ProjectPage = ({ projectName, project }: ProjectPageProps) => {
                 <div className="w-1/4 pr-4 border border-gray-800 shadow-lg rounded-lg">
                     <div className="bg-tertiary p-6 h-full overflow-y-auto">
                         <div className="justify-center text-center">
-                            <a href={project.url} className="text-primary flex items-center justify-center hover:text-white transition-colors duration-200">
-                                <h1 className="text-4xl font-extrabold text-primary hover:text-blue-300">{project.name}</h1>
+                            <a href={project.url} className="text-primary flex flex-col items-center justify-center hover:text-blue-300">
+                                <div>
+                                    <h1 className="text-4xl font-extrabold">{project.name}</h1>
+                                </div>
+                                <div className="flex items-center">
+                                    <p>Link to Github</p>
+                                    <FiExternalLink />
+                                </div>
                             </a>
                         </div>
-                        <p className="mt-4 mb-4 text-gray-400 text-lg text-center font-bold">{project.description}</p>
+                        <p className="mt-4 mb-4 text-gray-400 text-center font-bold">{project.description}</p>
                     </div>
                 </div>
             </main>

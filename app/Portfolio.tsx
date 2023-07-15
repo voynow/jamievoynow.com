@@ -31,6 +31,9 @@ const Portfolio = ({ className }: PortfolioProps) => {
     }, []);
     return (
         <div className={`${className} bg-secondary py-4 px-4 sm:px-6 lg:px-8`}>
+            <h1 className="text-4xl lg:text-6xl font-bold text-gray-800 text-center">
+                Portfolio
+            </h1>
             {loading ? (
                 <div className="flex justify-center items-center">
                     <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
@@ -48,7 +51,7 @@ const Portfolio = ({ className }: PortfolioProps) => {
                                 <Link href={`/project/${project.name}`}>
                                     <h2 className="text-xl font-semibold text-primary mb-2 hover:text-blue-300">{project.name}</h2>
                                 </Link>
-                                <div className="description-container text-gray-600">{project.description}</div>
+                                <div className="description-container text-gray-500">{project.description}</div>
                             </div>
                         </div>
                     ))}
