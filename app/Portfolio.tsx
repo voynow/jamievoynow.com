@@ -31,7 +31,7 @@ const Portfolio = ({ className }: PortfolioProps) => {
     }, []);
     return (
         <div className={`${className} bg-secondary py-4 px-4 sm:px-6 lg:px-8`}>
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-800 text-center">
+            <h1 className="text-3xl lg:text-6xl font-bold text-gray-800 text-center">
                 Portfolio
             </h1>
             {loading ? (
