@@ -41,20 +41,21 @@ const Portfolio = ({ className }: PortfolioProps) => {
             ) : (
                 <div className="mt-6 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {portfolio.map((project, index) => (
-                        <div key={index} className="rounded-xl border-2 border-gray-900 transition hover:scale-105">
-                            {project.imageUrl && (
-                                <div className="relative overflow-hidden border-2 border-gray-900 rounded-t-xl image-container h-64">
-                                    <img src={`/images/${project.imageUrl}`} alt={project.name} className="w-full h-full object-cover object-position:center portfolio-image hover:contrast-125" />
+                        <Link href={`/project/${project.name}`} key={index} passHref>
+                            <div className="rounded-xl border-2 border-gray-900 transition hover:scale-105 cursor-pointer hover:text-blue-200">
+                                {project.imageUrl && (
+                                    <div className="relative overflow-hidden border-2 border-gray-900 rounded-t-xl image-container h-64">
+                                        <img src={`/images/${project.imageUrl}`} alt={project.name} className="w-full h-full object-cover object-position:center portfolio-image hover:contrast-125" />
+                                    </div>
+                                )}
+                                <div className="mt-2 p-4">
+                                    <h2 className="text-xl font-semibold text-primary mb-2">{project.name}</h2>
+                                    <div className="description-container text-gray-500">{project.description}</div>
                                 </div>
-                            )}
-                            <div className="mt-2 p-4">
-                                <Link href={`/project/${project.name}`}>
-                                    <h2 className="text-xl font-semibold text-primary mb-2 hover:text-blue-300">{project.name}</h2>
-                                </Link>
-                                <div className="description-container text-gray-500">{project.description}</div>
                             </div>
-                        </div>
+                        </Link>
                     ))}
+
                 </div>
             )}
         </div>
