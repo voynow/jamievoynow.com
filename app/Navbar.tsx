@@ -8,7 +8,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between">
                 <Link href="/">
                     <div className="text-white text-2xl font-bold hover:text-blue-300 flex items-center">
-                        <img src="/images/headshot.jpg" alt="Jamie Voynow" className=" mr-4 w-8y h-12 rounded-full object-cover"/>
+                        <img src="/images/headshot.jpg" alt="Jamie Voynow" className=" mr-1 w-8y h-12 rounded-full object-cover"/>
                         <span className="text-2xl">Jamie Voynow</span>
                     </div>
                 </Link>

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 
 interface ChatInterfaceProps {
     project: {
@@ -54,8 +56,9 @@ const ChatInterface = ({ project }: ChatInterfaceProps) => {
             <div className="flex-grow overflow-y-auto pb-4">
                 <div className="flex justify-between items-center mb-4">
                     <h2 className="text-3xl font-bold text-primary">{project.name}</h2>
-                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-blue-300 rounded-lg text-white px-4 py-2 border-2 border-gray-300">
-                        View on GitHub
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="bg-primary hover:bg-blue-300 rounded-lg text-white px-4 py-2 border-2 border-gray-300 flex items-center">
+                        <span>Github</span>
+                        <FontAwesomeIcon icon={faExternalLinkAlt} className="ml-2" />
                     </a>
                 </div>
                 <p className='text-gray-400 mb-4'>{project.description}</p>
