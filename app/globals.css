@@ -145,3 +145,19 @@ html, body, #__next {
 .skill-icon:hover figcaption {
   opacity: 1;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #161616;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2e2e2e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a3a;
+}
