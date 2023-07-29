@@ -32,11 +32,6 @@ html, body, #__next {
   transition: filter 0.3s ease-in-out;
 }
 
-.image-container {
-  height: 300px;
-  overflow: hidden;
-}
-
 .description-container {
   height: 48px;
   overflow: auto;
@@ -80,7 +75,6 @@ html, body, #__next {
 }
 
 .nav-icon {
-  transition: all 0.25s ease-in-out;
   font-size: 16px;
 }
 
