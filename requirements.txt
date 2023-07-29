@@ -4,3 +4,4 @@ python-dotenv
 requests
 llm-blocks
 git2doc==0.2.4
+openai
