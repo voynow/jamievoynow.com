@@ -3,6 +3,7 @@ from flask import Flask, jsonify, request
 import flask_cors
 from llm_blocks import chat_utils
 import os
+import openai
 import requests
 
 dotenv.load_dotenv()
