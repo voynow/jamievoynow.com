@@ -45,7 +45,7 @@ const Portfolio = ({ className }: PortfolioProps) => {
                         <Link href={`/project/${project.name}`} key={index} passHref>
                             <div className="rounded-xl border-2 border-gray-900 transition hover:scale-105 cursor-pointer hover:text-blue-200">
                                 {project.imageUrl && (
-                                    <div className={`h-36 sm:h-48 md:h-64 lg:h-72 relative overflow-hidden border-2 border-gray-900 rounded-t-xl image-container`}>
+                                    <div className={`h-36 sm:h-48 md:h-64 lg:h-72 relative overflow-hidden border-2 border-gray-900 rounded-t-xl`}>
                                         <img src={`/images/${project.imageUrl}`} alt={project.name} className="absolute top-0 left-0 w-full h-full object-cover object-position:center portfolio-image hover:contrast-125" />
                                     </div>
                                 )}
