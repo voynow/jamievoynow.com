@@ -2,7 +2,6 @@ import dotenv
 from flask import Flask, jsonify, request
 import flask_cors
 from llm_blocks import chat_utils
-import openai
 import os
 import requests
 
@@ -193,13 +192,10 @@ def chat():
     repo_docs = get_repo_content("voynow", project_name)
     repo_str = "\n\n".join([f"{key}:\n{value}" for key, value in repo_docs.items()])
     
-    try:
-        project_chat_chain = chat_utils.GenericChain(
-            template=TEMPLATE, model_name="gpt-3.5-turbo-16k"
-        )
-        response = project_chat_chain(repo_url=repo_url, repo=repo_str, query=query)
-    except openai.error.InvalidRequestError:
-        response = f"I'm sorry, this repo is not supported yet due to context length limitations. We are actively working on fixing this!"
+    project_chat_chain = chat_utils.GenericChain(
+        template=TEMPLATE, model_name="gpt-3.5-turbo-16k"
+    )
+    response = project_chat_chain(repo_url=repo_url, repo=repo_str, query=query)
     return jsonify(response["text"])
 
 
