@@ -3,4 +3,3 @@ flask-cors
 python-dotenv
 requests
 llm-blocks==0.2.3
-git2doc==0.2.4
