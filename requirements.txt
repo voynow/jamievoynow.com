@@ -3,3 +3,4 @@ flask-cors
 python-dotenv
 requests
 llm-blocks==0.2.3
+openai
