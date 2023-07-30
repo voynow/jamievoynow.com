@@ -40,12 +40,12 @@ const Portfolio = ({ className }: PortfolioProps) => {
                     <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
                 </div>
             ) : (
-                <div className="mt-6 grid gap-6 grid-cols-2 lg:grid-cols-4">
+                <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 px-4 sm:px-0">
                     {portfolio.map((project, index) => (
                         <Link href={`/project/${project.name}`} key={index} passHref>
                             <div className="rounded-xl border-2 border-gray-900 transition hover:scale-105 cursor-pointer hover:text-blue-200">
                                 {project.imageUrl && (
-                                    <div className={`h-36 sm:h-48 md:h-64 lg:h-72 relative overflow-hidden border-2 border-gray-900 rounded-t-xl`}>
+                                    <div className={`h-48 md:h-64 lg:h-72 relative overflow-hidden border-2 border-gray-900 rounded-t-xl`}>
                                         <img src={`/images/${project.imageUrl}`} alt={project.name} className="absolute top-0 left-0 w-full h-full object-cover object-position:center portfolio-image hover:contrast-125" />
                                     </div>
                                 )}
