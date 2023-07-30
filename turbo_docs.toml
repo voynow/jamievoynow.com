@@ -21,9 +21,10 @@ ignore = [
     ".gitignore",
     "index.py",
     # "Navbar.tsx",
-    "Skills.tsx",
+    # "Skills.tsx",
     "assets",
-    # "ChatInterface.tsx",
-    # "ProjectPage.tsx",
-    "portfolio.tsx",
+    "ChatInterface.tsx",
+    "ProjectPage.tsx",
+    # "Portfolio.tsx",
+    # "globals.css"
 ]
