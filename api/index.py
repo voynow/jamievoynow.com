@@ -114,6 +114,10 @@ EXCLUDE_EXTENSIONS = [
     ".mat",
 ]
 
+BLACKLIST_MAP = {
+    "leetcode-analysis": "solutions"
+}
+
 
 def fetch_portfolio():
     """Fetch pinned projects from GitHub"""
@@ -162,6 +166,9 @@ def get_repo_content(user, repo, path=""):
     repo_repsone = requests.get(url, headers=headers)
     repo_repsone.raise_for_status()
 
+    print(repo)
+    print(BLACKLIST_MAP)
+
     files_dict = {}
     for file in repo_repsone.json():
         if file["type"] == "dir":
@@ -169,6 +176,12 @@ def get_repo_content(user, repo, path=""):
 
         elif not any(file["name"].endswith(ext) for ext in EXCLUDE_EXTENSIONS):
             if file["size"] == 0 and file["download_url"] is None:
+                continue
+            print(file['path'])
+            print(repo)
+            print(BLACKLIST_MAP)
+            if repo in BLACKLIST_MAP and BLACKLIST_MAP[repo] in file["path"]:
+                print(f"Skipping blacklisted file {file['path']}")
                 continue
             file_response = requests.get(file["download_url"], headers=headers)
             file_response.raise_for_status()
@@ -190,6 +203,7 @@ def chat():
     github_url = PROFILE_INFO["github"]
     repo_url = f"{github_url}/{project_name}"
     repo_docs = get_repo_content("voynow", project_name)
+    print(repo_docs.keys())
     repo_str = "\n\n".join([f"{key}:\n{value}" for key, value in repo_docs.items()])
     
     project_chat_chain = chat_utils.GenericChain(
