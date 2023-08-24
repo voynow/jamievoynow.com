@@ -1,7 +1,7 @@
 import dotenv
 from flask import Flask, jsonify, request
 import flask_cors
-from llm_blocks import chat_utils
+from llm_blocks import blocks
 import os
 import requests
 
@@ -166,9 +166,6 @@ def get_repo_content(user, repo, path=""):
     repo_repsone = requests.get(url, headers=headers)
     repo_repsone.raise_for_status()
 
-    print(repo)
-    print(BLACKLIST_MAP)
-
     files_dict = {}
     for file in repo_repsone.json():
         if file["type"] == "dir":
@@ -177,9 +174,6 @@ def get_repo_content(user, repo, path=""):
         elif not any(file["name"].endswith(ext) for ext in EXCLUDE_EXTENSIONS):
             if file["size"] == 0 and file["download_url"] is None:
                 continue
-            print(file['path'])
-            print(repo)
-            print(BLACKLIST_MAP)
             if repo in BLACKLIST_MAP and BLACKLIST_MAP[repo] in file["path"]:
                 print(f"Skipping blacklisted file {file['path']}")
                 continue
@@ -203,14 +197,13 @@ def chat():
     github_url = PROFILE_INFO["github"]
     repo_url = f"{github_url}/{project_name}"
     repo_docs = get_repo_content("voynow", project_name)
-    print(repo_docs.keys())
     repo_str = "\n\n".join([f"{key}:\n{value}" for key, value in repo_docs.items()])
     
-    project_chat_chain = chat_utils.GenericChain(
+    project_chat_chain = blocks.TemplateBlock(
         template=TEMPLATE, model_name="gpt-3.5-turbo-16k"
     )
     response = project_chat_chain(repo_url=repo_url, repo=repo_str, query=query)
-    return jsonify(response["text"])
+    return jsonify(response)
 
 
 if __name__ == "__main__":
