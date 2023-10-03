@@ -114,10 +114,6 @@ EXCLUDE_EXTENSIONS = [
     ".mat",
 ]
 
-BLACKLIST_MAP = {
-    "leetcode-analysis": "solutions"
-}
-
 
 def fetch_portfolio():
     """Fetch pinned projects from GitHub"""
@@ -174,9 +170,6 @@ def get_repo_content(user, repo, path=""):
         elif not any(file["name"].endswith(ext) for ext in EXCLUDE_EXTENSIONS):
             if file["size"] == 0 and file["download_url"] is None:
                 continue
-            if repo in BLACKLIST_MAP and BLACKLIST_MAP[repo] in file["path"]:
-                print(f"Skipping blacklisted file {file['path']}")
-                continue
             file_response = requests.get(file["download_url"], headers=headers)
             file_response.raise_for_status()
 
@@ -198,7 +191,7 @@ def chat():
     repo_url = f"{github_url}/{project_name}"
     repo_docs = get_repo_content("voynow", project_name)
     repo_str = "\n\n".join([f"{key}:\n{value}" for key, value in repo_docs.items()])
-    
+
     project_chat_chain = blocks.TemplateBlock(
         template=TEMPLATE, model_name="gpt-3.5-turbo-16k"
     )
